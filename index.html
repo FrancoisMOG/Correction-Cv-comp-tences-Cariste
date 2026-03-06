@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correction : CV Compétences - Cariste</title>
+    <style>
+        /* 
+         * DESIGN SYSTEM & VARIABLES
+         * Optimisé pour le remplissage "Full Page" (Lisible + Dense)
+         */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-light: #f0f2f5;
+            --white: #ffffff;
+            --text-main: #333333;
+            --border-color: #d1d5db;
+        }
+
+        /* RESET & BASE STYLES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 12.5px; /* Police augmentée pour le confort et le remplissage */
+            line-height: 1.5; /* Interligne aéré pour occuper la hauteur */
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            padding: 20px;
+        }
+
+        /* BOUTON D'EXPORT */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+            transition: transform 0.2s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .print-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* LAYOUT CONTAINER (A4 Simulation) */
+        .page-container {
+            width: 210mm;
+            min-height: 297mm; 
+            margin: 0 auto;
+            background: var(--white);
+            /* Marges internes augmentées pour un look "plein" */
+            padding: 12mm 15mm; 
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+
+        /* HEADER */
+        header {
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* SECTIONS */
+        section {
+            margin-bottom: 12px; /* Espacement entre sections augmenté */
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            background: #fff;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        /* SECTION HEADER */
+        .section-header {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: 6px 12px; /* Plus d'espace dans les titres */
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        h2 {
+            font-size: 13.5px;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        /* OBJECTIVE BOX */
+        .objective {
+            background-color: #ebf5fb;
+            border-left: 4px solid var(--accent-color);
+            padding: 8px 12px; /* Boîte objectif plus grande */
+            margin: 8px 12px;
+            border-radius: 3px;
+            font-size: 11.5px;
+            line-height: 1.5;
+        }
+
+        .objective strong {
+            color: var(--accent-color);
+            display: inline;
+            margin-right: 5px;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            font-weight: 800;
+        }
+
+        /* CONTENT LIST */
+        .content-list {
+            list-style: none;
+            padding: 0 12px 12px 12px;
+        }
+
+        .content-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px; /* Plus d'air entre les puces */
+            color: #444;
+            text-align: justify; /* Justifier pour bien remplir les lignes */
+        }
+
+        .content-list li strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .content-list li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        /* PRINT OPTIMIZATION */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .print-btn {
+                display: none !important;
+            }
+
+            .page-container {
+                width: 100%;
+                max-width: 100%;
+                box-shadow: none;
+                margin: 0;
+                border: none;
+                padding: 8mm 10mm; /* Ajustement final pour l'imprimante */
+            }
+
+            @page {
+                size: A4;
+                margin: 0mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bouton d'action flottant -->
+    <button class="print-btn" onclick="window.print()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Télécharger en PDF
+    </button>
+
+    <div class="page-container">
+        <header>
+            <h1>Correction : CV Compétences TP Cariste</h1>
+            <div class="subtitle">Référentiel de compétences et qualités attendues</div>
+        </header>
+
+        <main>
+            <!-- Section 1: Compétences professionnelles -->
+            <section>
+                <div class="section-header">
+                    <span class="step-number">1</span>
+                    <h2>Compétences professionnelles attendues (10)</h2>
+                </div>
+                <div class="objective">
+                    <strong>Objectif :</strong>
+                    Maîtriser les aspects techniques, opérationnels et sécuritaires liés à la fonction de cariste.
+                </div>
+                <ul class="content-list">
+                    <li><strong>Conduite sécurisée d'engins de manutention :</strong> Maîtrise des chariots élévateurs adaptés aux opérations, réglages et conduite en sécurité.</li>
+                    <li><strong>Contrôles préventifs et maintenance de 1er niveau :</strong> Vérifier l’état du chariot, détecter anomalies et signaler ou consigner les pannes.</li>
+                    <li><strong>Réception et contrôle des marchandises :</strong> Vérifier conformité, quantité, et état des colis à la réception.</li>
+                    <li><strong>Préparation de commandes :</strong> Prélever, conditionner et étiqueter selon les procédures qualité et traçabilité.</li>
+                    <li><strong>Stockage et rangement optimisés :</strong> Positionner les palettes en respectant les règles de stockage, rotation et sécurité.</li>
+                    <li><strong>Utilisation des outils informatiques de gestion d’entrepôt :</strong> Saisie des mouvements, lecture d’étiquettes, utilisation de WMS ou terminaux portables.</li>
+                    <li><strong>Respect des règles de sécurité et prévention des risques :</strong> Application des consignes SST, EPI, et procédures d’urgence.</li>
+                    <li><strong>Organisation et optimisation des flux :</strong> Prioriser les tâches, organiser les tournées et limiter les ruptures/attentes.</li>
+                    <li><strong>Communication opérationnelle :</strong> Transmission claire des informations au chef de service, aux collègues et aux services qualité.</li>
+                    <li><strong>Traçabilité et qualité documentaire :</strong> Tenue des documents de transport, bons de livraison et enregistrements conformes.</li>
+                </ul>
+            </section>
+
+            <!-- Section 2: Qualités comportementales -->
+            <section>
+                <div class="section-header">
+                    <span class="step-number">2</span>
+                    <h2>Qualités comportementales recherchées (6)</h2>
+                </div>
+                <div class="objective">
+                    <strong>Objectif :</strong>
+                    Adopter une attitude professionnelle, fiable et orientée vers le collectif.
+                </div>
+                <ul class="content-list">
+                    <li><strong>Rigueur :</strong> Respect strict des procédures et des consignes de sécurité.</li>
+                    <li><strong>Sens de l’organisation :</strong> Capacité à prioriser et à gérer plusieurs tâches simultanément.</li>
+                    <li><strong>Fiabilité et ponctualité :</strong> Assiduité et respect strict des horaires de plateforme.</li>
+                    <li><strong>Esprit d’équipe :</strong> Collaboration active avec les préparateurs, autres caristes et l'encadrement.</li>
+                    <li><strong>Réactivité :</strong> Capacité à gérer les incidents et imprévus sans perte de productivité.</li>
+                    <li><strong>Autonomie responsable :</strong> Savoir prendre des initiatives pertinentes tout en respectant les règles établies.</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
